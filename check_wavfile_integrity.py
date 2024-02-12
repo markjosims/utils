@@ -16,9 +16,11 @@ def main(argv: Optional[Sequence[str]] = None):
         wav_fps = glob(wav_dir+'**/*.wav', recursive=True)
     else:
         wav_fps = glob(wav_dir+'*.wav')
-    [check_wav_for_warning(wav_fp) for wav_fp in wav_fps]
+    for wav_fp in wav_fps:
+        check_wav_for_warning(wav_fp)
     
 def check_wav_for_warning(wav_fp: str):
+    print(wav_fp)
     wavfile.read(wav_fp) # for now just let warning get printed to stdout
 
 
