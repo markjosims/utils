@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from typing import Sequence, Optional
 from scipy.io import wavfile
 from glob import glob
+import os
 
 
 def main(argv: Optional[Sequence[str]] = None):
@@ -13,9 +14,9 @@ def main(argv: Optional[Sequence[str]] = None):
 
     wav_dir = args.WAVDIR
     if args.recursive:
-        wav_fps = glob(wav_dir+'**/*.wav', recursive=True)
+        wav_fps = glob(os.path.join(wav_dir, '**/*.wav'), recursive=True)
     else:
-        wav_fps = glob(wav_dir+'*.wav')
+        wav_fps = glob(os.path.join(wav_dir, '*.wav'))
     for wav_fp in wav_fps:
         check_wav_for_warning(wav_fp)
     
