@@ -5,12 +5,12 @@ from glob import glob
 import os
 
 
-def main(argv: Optional[Sequence[str]] = None):
+def main():
     parser = ArgumentParser('Check wavfile integrity')
     parser.add_argument('WAVDIR')
     parser.add_argument('--recursive', '-r', action='store_true')
 
-    args = parser.parse_args(argv)
+    args = parser.parse_args()
 
     wav_dir = args.WAVDIR
     if args.recursive:
