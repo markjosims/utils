@@ -3,6 +3,7 @@ from scipy.io import wavfile
 from glob import glob
 import os
 import warnings
+from tqdm import tqdm
 
 warnings.filterwarnings("error")
 
@@ -18,7 +19,7 @@ def main():
         wav_fps = glob(os.path.join(wav_dir, '**/*.wav'), recursive=True)
     else:
         wav_fps = glob(os.path.join(wav_dir, '*.wav'))
-    for wav_fp in wav_fps:
+    for wav_fp in tqdm(wav_fps, desc='wav files discovered'):
         check_wav_for_warning(wav_fp)
     
 def check_wav_for_warning(wav_fp: str):
