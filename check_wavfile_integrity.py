@@ -1,9 +1,10 @@
 from argparse import ArgumentParser
-from typing import Sequence, Optional
 from scipy.io import wavfile
 from glob import glob
 import os
+import warnings
 
+warnings.filterwarnings("error")
 
 def main():
     parser = ArgumentParser('Check wavfile integrity')
@@ -21,9 +22,10 @@ def main():
         check_wav_for_warning(wav_fp)
     
 def check_wav_for_warning(wav_fp: str):
-    print(wav_fp)
-    wavfile.read(wav_fp) # for now just let warning get printed to stdout
-
+    try:
+        wavfile.read(wav_fp) # for now just let warning get printed to stdout
+    except wavfile.WavFileWarning:
+        print(f"Error with {wav_fp}")
 
 if __name__ == '__main__':
     main()
