@@ -26,8 +26,8 @@ def check_wav_for_warning(wav_fp: str):
     try:
         wavfile.read(wav_fp) # for now just let warning get printed to stdout
     except wavfile.WavFileWarning as w:
-        print(f"Error with {wav_fp}")
-        print(w)
+        tqdm.write(f"Error with {wav_fp}")
+        tqdm.write(w)
 
 if __name__ == '__main__':
     main()
