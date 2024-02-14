@@ -39,7 +39,8 @@ def main(argv: Optional[Sequence[str]] = None):
             eaf = eaf_obj,
             inference_method='local',
             return_ac_probs=True,
-            model='/mnt/cube/home/AD/mjsimmons/markjosims/wav2vec2-large-mms-1b-tira-lid-2cat-tira-finetune'
+            model='/mnt/cube/home/AD/mjsimmons/markjosims/wav2vec2-large-mms-1b-tira-lid-2cat-tira-finetune',
+            task='LID'
         )
         eaf_stem = os.path.basename(eaf_fp)
         out_fp = os.path.join(out_dir, eaf_stem)
