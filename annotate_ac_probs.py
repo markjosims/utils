@@ -20,9 +20,9 @@ def main(argv: Optional[Sequence[str]] = None):
     out_dir = args.OUTDIR
 
     if args.recursive:
-        eaf_fps = glob(os.path.join(eaf_dir, '**/*.wav'), recursive=True)
+        eaf_fps = glob(os.path.join(eaf_dir, '**/*.eaf'), recursive=True)
     else:
-        eaf_fps = glob(os.path.join(eaf_dir, '*.wav'))
+        eaf_fps = glob(os.path.join(eaf_dir, '*.eaf'))
     for eaf_fp in tqdm(eaf_fps, desc="Annotating eafs"):
         eaf_obj = Elan.eaf(eaf_fp)
         media_paths = [x['MEDIA_URL'] for x in eaf_obj.media_descriptors]
