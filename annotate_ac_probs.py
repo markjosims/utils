@@ -5,6 +5,7 @@ from glob import glob
 from zugubul.models.infer import infer
 from pympi import Elan
 import os
+from tqdm import tqdm
 
 
 def main(argv: Optional[Sequence[str]] = None):
@@ -22,7 +23,7 @@ def main(argv: Optional[Sequence[str]] = None):
         eaf_fps = glob(os.path.join(eaf_dir, '**/*.wav'), recursive=True)
     else:
         eaf_fps = glob(os.path.join(eaf_dir, '*.wav'))
-    for eaf_fp in eaf_fps:
+    for eaf_fp in tqdm(eaf_fps, desc="Annotating eafs"):
         eaf_obj = Elan.eaf(eaf_fp)
         media_paths = [x['MEDIA_URL'] for x in eaf_obj.media_descriptors]
         media = media_paths[0]
