@@ -24,7 +24,7 @@ def main(argv: Optional[Sequence[str]] = None):
     else:
         eaf_fps = glob(os.path.join(eaf_dir, '*.eaf'))
     for eaf_fp in tqdm(eaf_fps, desc="Annotating eafs"):
-        eaf_obj = Elan.eaf(eaf_fp)
+        eaf_obj = Elan.Eaf(eaf_fp)
         media_paths = [x['MEDIA_URL'] for x in eaf_obj.media_descriptors]
         media = media_paths[0]
         # trim prefix added by ELAN
