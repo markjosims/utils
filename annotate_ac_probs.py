@@ -15,6 +15,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser.add_argument('--recursive', '-r', action='store_true')
     parser.add_argument('--tier', '-t')
     parser.add_argument('--tgt_lang')
+    parser.add_argument('--model', '-m')
 
     args = parser.parse_args(argv)
 
@@ -46,6 +47,7 @@ def main(argv: Optional[Sequence[str]] = None):
             max_len=20,
             tier=args.tier,
             tgt_lang=args.tgt_lang,
+            model=args.model,
         )
         eaf_stem = os.path.basename(eaf_fp)
         out_fp = os.path.join(out_dir, eaf_stem)
