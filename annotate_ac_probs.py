@@ -13,6 +13,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser.add_argument('EAFDIR')
     parser.add_argument('OUTDIR')
     parser.add_argument('--recursive', '-r', action='store_true')
+    parser.add_argument('--tier', '-t')
 
     args = parser.parse_args(argv)
 
@@ -42,6 +43,7 @@ def main(argv: Optional[Sequence[str]] = None):
             model='/mnt/cube/home/AD/mjsimmons/markjosims/wav2vec2-large-mms-1b-tira-lid-2cat-tira-finetune',
             task='LID',
             max_len=20,
+            tier=args.tier,
         )
         eaf_stem = os.path.basename(eaf_fp)
         out_fp = os.path.join(out_dir, eaf_stem)
